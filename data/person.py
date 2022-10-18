@@ -45,7 +45,7 @@ class Person:
         return self.seconds
 
     def print(self):
-        print(self.id,self.surname,self.middlesurname,self.name,self.sex,self.age)
+        print (f'{self.id}  {self.surname}    {self.middlesurname}       {self.name} {self.sex} {self.age}')
 
     def print_time(self):
         print(self.hours,self.minutes,self.seconds)
