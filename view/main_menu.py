@@ -1,9 +1,11 @@
-
+from os import system
+from controllers.file_manager import file_manager
 
 def main_menu():
 
     option = ''
     while option != '0':
+        system('cls')
         print('\n\nProyecto 1 - Electiva Programacion con Python')
         print('Elaborado por: Santiago Figueroa')
         print('1.- Archivo')
@@ -12,13 +14,14 @@ def main_menu():
 
         option = input('Ingrese una opcion: ')
         if option == '1':
-            print('Archivo')
+            file_manager()
         elif option == '2':
             print('Acciones')
         elif option == '0':
             print('Saliendo...')
         else:
             print('Opcion no valida')
+            system('pause')
 
 
 
