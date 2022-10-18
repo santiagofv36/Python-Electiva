@@ -5,7 +5,7 @@ def main_menu():
 
     option = ''
     while option != '0':
-        system('cls')
+        
         print('\n\nProyecto 1 - Electiva Programacion con Python')
         print('Elaborado por: Santiago Figueroa')
         print('1.- Archivo')
@@ -14,12 +14,16 @@ def main_menu():
 
         option = input('Ingrese una opcion: ')
         if option == '1':
+            system('cls')
             file_manager()
         elif option == '2':
+            system('cls')
             print('Acciones')
         elif option == '0':
+            system('cls')
             print('Saliendo...')
         else:
+            system('cls')
             print('Opcion no valida')
             system('pause')
 
