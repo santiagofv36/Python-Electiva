@@ -1,7 +1,7 @@
 
 
 class Person:
-    def __init__(self,id,surname,middlesurname,name,i_middlename,sex,age,hours,minutes,seconds):
+    def __init__(self,id,surname,middlesurname,name,i_middlename,sex,age,time):
         self.id = id
         self.surname = surname
         self.middlesurname = middlesurname
@@ -9,9 +9,7 @@ class Person:
         self.i_middlename = i_middlename
         self.sex = sex
         self.age = age
-        self.hours = hours
-        self.minutes = minutes
-        self.seconds = seconds
+        self.time = time
 
     # Getters
     def get_id(self):
@@ -45,10 +43,11 @@ class Person:
         return self.seconds
 
     def return_list(self):
-        return [self.id,self.surname,self.middlesurname,self.name,self.i_middlename,self.sex,self.age,self.hours,self.minutes,self.seconds]
+        return [self.id,self.surname,self.middlesurname,self.name,self.i_middlename,self.sex,self.age,'{:02d}:{:02d}:{:02d}'.format(self.time.hour,self.time.minute,self.time.second)]
 
     def get_time(self):
-        return self.hours*3600 + self.minutes*60 + self.seconds
+        return self.time
+        # return self.time.hour*3600 + self.time.minute*60 + self.time.second
 
 
 
