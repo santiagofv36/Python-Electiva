@@ -40,7 +40,7 @@ def file_manager(people,file):
     except FileNotFoundError as e:
         # TODO: Crear propia excepcion que no existe el archivo
         print('No existe el archivo')
-        return []
+        return people
     except ValueError as ve:
         print('Hay una hora o edad invalida')
 
