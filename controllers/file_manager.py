@@ -2,6 +2,8 @@ from os import system
  # Importo el modulo creado por mi para poder usar la clase Person
 from data.person import Person
 
+from datetime import time
+
 '''
 Esta funcion lee un archivo y guarda los datos en una lista de personas
 toma como parametro el nombre del archivo y una lista que puede estar vacia o no
@@ -25,9 +27,9 @@ def file_manager(people,file):
                     continue
                 # Se crea una persona por cada linea del archivo
                 # Para los valores como la edad, horas, minutos y segundos, se convierten a int y los segundos se les elimina el salto de linea
-
+                par_time = time(int(separated[7]),int(separated[8]),int(separated[9].replace('\n','')))
                 person = Person(separated[0],separated[1].capitalize(),separated[2].capitalize(),separated[3].capitalize(),separated[4],
-                separated[5],int(separated[6]),int(separated[7]),int(separated[8]),int(separated[9].replace('\n','')))
+                separated[5],int(separated[6]),par_time)
                 # Si ya existe la cedula en el sistema no se agrega la persona
                 if person.get_id() not in [ person.get_id() for person in people ]:
                     people.append(person)
@@ -38,6 +40,7 @@ def file_manager(people,file):
     except FileNotFoundError as e:
         # TODO: Crear propia excepcion que no existe el archivo
         print('No existe el archivo')
+        return []
     except ValueError as ve:
         print('Hay una hora o edad invalida')
 
