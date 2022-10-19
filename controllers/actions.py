@@ -12,7 +12,6 @@ Se imprime la lista
 
 def print_participants(table):
     
-
     if len(table) == 0:
         print('No hay participantes')
         return
