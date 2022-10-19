@@ -20,18 +20,26 @@ def file_manager(people,file):
 
             for line in lines:
                 separated = line.split(',') # Separo por comas el contenido de cada linea, para guardar cada dato en una lista
+                if len(separated) != 10: # Si la lista no tiene 10 elementos, es porque no es el formato correcto por linea
+                    print('La linea no tiene el formato correcto')
+                    continue
                 # Se crea una persona por cada linea del archivo
                 # Para los valores como la edad, horas, minutos y segundos, se convierten a int y los segundos se les elimina el salto de linea
 
-                person = Person(separated[0],separated[1],separated[2],separated[3],separated[4],
-                separated[5],int(separated[6]),int(separated[7]),int(separated[8]),int(separated[9].replace('\n',''))) 
+                person = Person(separated[0],separated[1].capitalize(),separated[2].capitalize(),separated[3].capitalize(),separated[4],
+                separated[5],int(separated[6]),int(separated[7]),int(separated[8]),int(separated[9].replace('\n','')))
+                # Si ya existe la cedula en el sistema no se agrega la persona
+                if person.get_id() not in [ person.get_id() for person in people ]:
+                    people.append(person)
 
-                people.append(person)
         # Devuelve la lista de personas
         return people
+    # Manejo de expcepciones como archivo invalido o edad, tiempo invalido
     except FileNotFoundError as e:
         # TODO: Crear propia excepcion que no existe el archivo
         print('No existe el archivo')
+    except ValueError as ve:
+        print('Hay una hora o edad invalida')
 
 # Manejo del menu de archivos
 

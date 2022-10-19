@@ -24,7 +24,7 @@ class Person:
         return self.middlesurname
 
     def get_name(self):
-        return self.name
+        return f'{self.name} {self.surname}'
 
     def get_i_middlename(self):
         return self.i_middlename
@@ -44,10 +44,15 @@ class Person:
     def get_seconds(self):
         return self.seconds
 
-    def print(self):
-        print (f'{self.id}  {self.surname}    {self.middlesurname}       {self.name} {self.sex} {self.age}')
+    def return_list(self):
+        return [self.id,self.surname,self.middlesurname,self.name,self.i_middlename,self.sex,self.age,self.hours,self.minutes,self.seconds]
 
-    def print_time(self):
-        print(self.hours,self.minutes,self.seconds)
+    def get_time(self):
+        return self.hours*3600 + self.minutes*60 + self.seconds
+
+
+
+
+
 
 
