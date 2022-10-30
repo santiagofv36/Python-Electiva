@@ -47,7 +47,7 @@ class Person:
 
     def get_time(self):
         return self.time
-        # return self.time.hour*3600 + self.time.minute*60 + self.time.second
+
 
 
 

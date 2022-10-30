@@ -1,11 +1,11 @@
-from os import system
+from os import system, name
 from controllers.file_manager import file_main_menu
 from controllers.actions import main_menu_actions
 
 
 def main_menu():
     option = ''
-    people = []# Para poder usar la variable people en todos los menus
+    people = [] # Para poder usar la variable people en todos los menus
     while option != '0':
         
         print('\n\nProyecto 1 - Electiva Programacion con Python')
@@ -16,19 +16,31 @@ def main_menu():
 
         option = input('Ingrese una opcion: ')
         if option == '1':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             people = file_main_menu(people)
         elif option == '2':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('Acciones')
             main_menu_actions(people)
         elif option == '0':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('Saliendo...')
         else:
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('Opcion no valida')
-            system('pause')
+            input('Presione cualquier tecla para continuar')
 
 
 
