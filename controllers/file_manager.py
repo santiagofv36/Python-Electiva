@@ -61,18 +61,27 @@ def file_main_menu(people):
         print('0.- Volver al menu principal')
         option = input('Ingrese una opcion: ')
         if option == '1':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('Si no se elige ningun archivo carga uno por defecto')
             file = input('Ingrese el nombre del archivo: ')
             return file_manager(people,file) # Cuando decida cargar un archivo retorno la lista de personas con los datos del archivo
 
         elif option == '0':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('Volviendo...')
         else:
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('Opcion no valida')
-            system('pause')
+            input('Presione cualquier tecla para continuar')
         
             
     
