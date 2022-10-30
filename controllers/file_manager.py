@@ -3,6 +3,10 @@ from os import system
 from data.person import Person
 
 from datetime import time
+from exceptions.IncompleteFile import IncompleteFile
+from exceptions.IncosistentValue import IncosistentValue
+from exceptions.NotTxt import NotTxt
+from exceptions.UnkownFile import UnkownFile
 
 '''
 Esta funcion lee un archivo y guarda los datos en una lista de personas
@@ -15,6 +19,9 @@ def file_manager(people,file):
     
     if file == '':
         file = 'competencia.txt'
+    elif file.endswith('.txt') == False:
+        print(NotTxt(file))
+        return
 
     try:
         with open(file,'r') as f:
@@ -23,8 +30,8 @@ def file_manager(people,file):
             for line in lines:
                 separated = line.split(',') # Separo por comas el contenido de cada linea, para guardar cada dato en una lista
                 if len(separated) != 10: # Si la lista no tiene 10 elementos, es porque no es el formato correcto por linea
-                    print('La linea no tiene el formato correcto')
-                    continue
+                    print(IncompleteFile(file))
+                    break
                 # Se crea una persona por cada linea del archivo
                 # Para los valores como la edad, horas, minutos y segundos, se convierten a int y los segundos se les elimina el salto de linea
                 par_time = time(int(separated[7]),int(separated[8]),int(separated[9].replace('\n','')))
@@ -36,13 +43,11 @@ def file_manager(people,file):
 
         # Devuelve la lista de personas
         return people
-    # Manejo de expcepciones como archivo invalido o edad, tiempo invalido
     except FileNotFoundError as e:
-        # TODO: Crear propia excepcion que no existe el archivo
-        print('No existe el archivo')
-        return people
+        print(UnkownFile(file))
+
     except ValueError as ve:
-        print('Hay una hora o edad invalida')
+        print(IncosistentValue(file))
 
 # Manejo del menu de archivos
 

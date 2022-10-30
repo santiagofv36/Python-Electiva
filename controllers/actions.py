@@ -1,4 +1,4 @@
-from os import system
+from os import system,name
 from datetime import timedelta
 
 '''
@@ -160,17 +160,29 @@ def main_menu_actions(people):
 
         option = input('Ingrese una opcion: ')
         if option == '1':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')            
             print('\n\nLista con total de participantes\n\n')
             print_participants(people)
-            system('pause')
-            system('cls')
+            input('Presione cualquier tecla para continuar')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '2':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nCantidad total de participantes\n\n')
             print(f'Cantidad de participantes: {total_participants(people)}')
-            system('pause')
-            system('cls')
+            input('Presione cualquier tecla para continuar')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '3':
             system('cls')
             print('\n\nCantidad de participantes por grupo etario\n\n')
@@ -181,7 +193,7 @@ def main_menu_actions(people):
                 junior, senior, master = age_group(people)
                 print('Juniors\t\tSeniors\t\tMasters')
                 print(f'{len(junior)}\t\t{len(senior)}\t\t{len(master)}')
-            system('pause')
+            input('Presione cualquier tecla para continuar')
             system('cls')
         elif option == '4':
             system('cls')
@@ -193,7 +205,7 @@ def main_menu_actions(people):
                 amount = sex_group(people)
                 print('Hombres\t\tMujeres')
                 print(f'{len(amount[0])}\t\t{len(amount[1])}')
-            system('pause')
+            input('Presione cualquier tecla para continuar')
             system('cls')
         elif option == '5':
             system('cls')
@@ -205,7 +217,7 @@ def main_menu_actions(people):
                 winners = winners_by_age(people)
                 print('Juniors\t\tSeniors\t\tMasters')
                 print(f'{winners[0].get_name()}\t{winners[1].get_name()}\t{winners[2].get_name()}')
-            system('pause')
+            input('Presione cualquier tecla para continuar')
             system('cls')
         elif option == '6':
             system('cls')
@@ -218,10 +230,13 @@ def main_menu_actions(people):
                 print('Hombres\t\tMujeres')
                 print(f'{winners[0].get_name()}\t{winners[1].get_name()}')
 
-            system('pause')
+            input('Presione cualquier tecla para continuar')
             system('cls')
         elif option == '7':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nGanadores por grupo etario y sexo\n\n')
             if len(people) == 0:
                 print('No hay participantes')
@@ -231,19 +246,31 @@ def main_menu_actions(people):
                 print(f'Hombres:  {winners[0].get_name()}  \t{winners[2].get_name()}  \t{winners[4].get_name()}')
                 print(f'Mujeres:  {winners[1].get_name()}  \t{winners[3].get_name()}  \t{winners[5].get_name()}')
             
-            system('pause')
-            system('cls')
+            input('Presione cualquier tecla para continuar')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '8':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nGanador General\n\n')
             if len(people) == 0:
                 print('No hay participantes')
             else:
                 print(f'Ganador General: {winner(people).get_name()}')
-            system('pause')
-            system('cls')
+            input('Presione cualquier tecla para continuar')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '9':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nHistograma de participante por grupo etario\n\n')
             if len(people) == 0:
                 print('No hay participantes')
@@ -252,10 +279,16 @@ def main_menu_actions(people):
                 print(f'Juniors ({len(histogram[0])}): \t| {histogram[0]}')
                 print(f'Seniors ({len(histogram[1])}): \t| {histogram[1]}')
                 print(f'Masters ({len(histogram[2])}): \t| {histogram[2]}')
-            system('pause')
-            system('cls')
+            input('Presione cualquier tecla para continuar')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '10':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nPromedio de tiempo por grupo etario y sexo\n\n')
             if len(people) == 0:
                 print('No hay participantes')
@@ -263,12 +296,20 @@ def main_menu_actions(people):
                 avg_time = average_time(people)
                 print('Juniors\t\t\tSeniors\t\t\tMasters')
                 print(f'{avg_time[0]}\t\t{avg_time[1]}\t\t{avg_time[2]}')
-            system('pause')
-            system('cls')
+            input('Presione cualquier tecla para continuar')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '0':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         else:
-            system('cls')
             print('Opcion no valida')
-            system('cls')
-            system('pause')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
+            input('Presione cualquier tecla para continuar')
