@@ -184,7 +184,10 @@ def main_menu_actions(people):
             else:
                 system('cls')
         elif option == '3':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nCantidad de participantes por grupo etario\n\n')
             
             if len(people) == 0:
@@ -194,9 +197,15 @@ def main_menu_actions(people):
                 print('Juniors\t\tSeniors\t\tMasters')
                 print(f'{len(junior)}\t\t{len(senior)}\t\t{len(master)}')
             input('Presione cualquier tecla para continuar')
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '4':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nCantidad de participantes por sexo\n\n')
             
             if len(people) == 0:
@@ -206,9 +215,15 @@ def main_menu_actions(people):
                 print('Hombres\t\tMujeres')
                 print(f'{len(amount[0])}\t\t{len(amount[1])}')
             input('Presione cualquier tecla para continuar')
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '5':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nGanadores por grupo etario\n\n')
             
             if len(people) == 0:
@@ -218,9 +233,15 @@ def main_menu_actions(people):
                 print('Juniors\t\tSeniors\t\tMasters')
                 print(f'{winners[0].get_name()}\t{winners[1].get_name()}\t{winners[2].get_name()}')
             input('Presione cualquier tecla para continuar')
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '6':
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
             print('\n\nGanadores por sexo\n\n')
 
             if len(people) == 0:
@@ -231,7 +252,10 @@ def main_menu_actions(people):
                 print(f'{winners[0].get_name()}\t{winners[1].get_name()}')
 
             input('Presione cualquier tecla para continuar')
-            system('cls')
+            if name == 'posix':
+                system('clear')
+            else:
+                system('cls')
         elif option == '7':
             if name == 'posix':
                 system('clear')
