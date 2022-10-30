@@ -1,4 +1,4 @@
-from os import system
+from os import system,name
  # Importo el modulo creado por mi para poder usar la clase Person
 from data.person import Person
 
