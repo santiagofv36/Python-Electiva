@@ -157,6 +157,7 @@ def main_menu_actions(people):
         print('8.- Ganador General')
         print('9.- Histograma de participante por grupo etario')
         print('10.- Promedio de tiempo por grupo etario y sexo')
+        print('0.- Regresar al menu princial')
 
         option = input('Ingrese una opcion: ')
         if option == '1':
