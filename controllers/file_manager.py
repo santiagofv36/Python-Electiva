@@ -3,6 +3,7 @@ from os import system,name
 from data.person import Person
 
 from datetime import time
+from exceptions.EmpytyFile import EmptyFile
 from exceptions.IncompleteFile import IncompleteFile
 from exceptions.IncosistentValue import IncosistentValue
 from exceptions.NotTxt import NotTxt
@@ -18,7 +19,7 @@ def file_manager(people,file):
     # Si no se ingresa un nombre de archivo, se carga uno por defecto
     
     if file == '':
-        file = 'competencia.txt'
+        print(EmptyFile(file))
     elif file.endswith('.txt') == False:
         print(NotTxt(file))
         return
