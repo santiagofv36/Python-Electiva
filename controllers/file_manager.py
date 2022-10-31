@@ -20,9 +20,10 @@ def file_manager(people,file):
     
     if file == '':
         print(EmptyFile(file))
+        return []
     elif file.endswith('.txt') == False:
         print(NotTxt(file))
-        return
+        return []
 
     try:
         with open(file,'r') as f:
@@ -38,17 +39,17 @@ def file_manager(people,file):
                 par_time = time(int(separated[7]),int(separated[8]),int(separated[9].replace('\n','')))
                 person = Person(separated[0],separated[1].capitalize(),separated[2].capitalize(),separated[3].capitalize(),separated[4],
                 separated[5],int(separated[6]),par_time)
-                # Si ya existe la cedula en el sistema no se agrega la persona
-                if person.get_id() not in [ person.get_id() for person in people ]:
-                    people.append(person)
+                people.append(person)
 
         # Devuelve la lista de personas
         return people
     except FileNotFoundError as e:
         print(UnkownFile(file))
+        return []
 
     except ValueError as ve:
         print(IncosistentValue(file))
+        return []
 
 # Manejo del menu de archivos
 
@@ -66,7 +67,6 @@ def file_main_menu(people):
                 system('clear')
             else:
                 system('cls')
-            print('Si no se elige ningun archivo carga uno por defecto')
             file = input('Ingrese el nombre del archivo: ')
             return file_manager(people,file) # Cuando decida cargar un archivo retorno la lista de personas con los datos del archivo
 
