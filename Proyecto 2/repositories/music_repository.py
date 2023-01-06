@@ -53,10 +53,11 @@ class MusicRepository:
     '''
     async def get_track_by_id(self, db: Session, track_id: int) -> TrackInDB:
         track : TrackInDB = db.query(Tracks).get(track_id)
-        genre : Genres = db.query(Genres).get(track.GenreId)
-        media_type : MediaTypes = db.query(MediaTypes).get(track.MediaTypeId)
-        track.Genre = str(genre.Name) 
-        track.MediaType = str(media_type.Name)
+        if track:
+            genre : Genres = db.query(Genres).get(track.GenreId)
+            media_type : MediaTypes = db.query(MediaTypes).get(track.MediaTypeId)
+            track.Genre = str(genre.Name) 
+            track.MediaType = str(media_type.Name) 
         return track
 
 
