@@ -2,14 +2,19 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Creamos una instacia de Engine
+'''
+    Se crea el motor de la base de datos, se le pasa la ruta de la base de datos
+'''
 SQLALCHEMY_DATABASE_URL = "sqlite:///./chinook.db" 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-# este argumento: connect_args={"check_same_thread": False} es usado sólo en base de datos SQLite
 
-# se crea una SessionLocal, que es una sesión de la base de datos:
+'''
+    Se crea una sesion de la base de datos
+'''
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Creamos una instancia de DeclarativeMeta
+'''
+    Se crea la base de datos
+'''
 Base = declarative_base()
 

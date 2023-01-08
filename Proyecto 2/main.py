@@ -3,15 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from config_db import Base, engine
 
-from controllers.singer_endpoints import router as singer
-from controllers.albums_endpoints import router as albums
-from controllers.singers_endpoints import router as singers
-from controllers.track_endpoints import router as tracks
+from controllers.singer_controller import router as singer
+from controllers.albums_controller import router as albums
+from controllers.track_controller import router as tracks
 
 
 def get_application():
 
-    # crea la base de datos
+    '''
+        Crea la base de datos
+    '''
     Base.metadata.create_all(bind=engine)
 
     app = FastAPI(title="Music Store Parcial 2",
@@ -26,15 +27,23 @@ def get_application():
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    '''
+        Rutas de la API que corresponden a los controladores de cada entidad
+    '''
+
     app.include_router(singer, prefix="/music-store/api/v1")
     app.include_router(albums, prefix="/music-store/api/v1")
-    app.include_router(singers, prefix="/music-store/api/v1")
     app.include_router(tracks, prefix="/music-store/api/v1")
 
 
     return app
 
 app = get_application()
+
+'''
+    Ruta de inicio
+'''
 
 @app.get("/")
 def home() -> dict:
